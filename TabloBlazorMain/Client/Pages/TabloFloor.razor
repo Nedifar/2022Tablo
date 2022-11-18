@@ -1,0 +1,231 @@
+﻿@page "/tablofloor"
+@inject HttpClient Http
+@using System.Threading
+@using System.Net.Http.Formatting
+@using TabloBlazorMain.Shared.Models
+@using Microsoft.AspNetCore.SignalR.Client
+@using Microsoft.AspNetCore.Components
+@using System.Web
+@inject NavigationManager NavigationManager
+<head>
+    <meta charset="UTF-8" http-equiv="refresh" content="60*30">
+    <title>TabloFloor</title>
+    <link rel="stylesheet" href="/css/TabloFloorStyle.css" type="text/css" />
+    <style>
+        * {
+            color: white
+        }
+    </style>
+</head>
+<body class="mainBody">
+    <video autoplay muted loop>
+        <source src="audio/TishinaAudio.mp3" />
+    </video>
+    <div class="current_date_time">
+        <p class="monthP">
+            @month
+        </p>
+        <p class="dateP">
+            @date
+        </p>
+    </div>
+    <div class="current_paras_week" style="margin-top:5%">
+        <table>
+            <tr>
+                <td width="5%">Кабинет</td>
+                <td width="5%">Группа</td>
+                <td width="45%">Дисциплина</td>
+                <td width="12%">Преподаватель</td>
+                <td>Статус кабинета</td>
+            </tr>
+            @foreach (var model in DayWeeks)
+            {
+                <tr>
+                    <td width="5%" style="font-size:1.5em">@model.cabinet</td>
+                    <td width="5%" style="font-size:1.5em">@model.group</td>
+                    <td width="45%" style="font-size:1.5em">@model.GetDeciplineWithVerify(teachers)</td>
+                    <td width="12%" style="font-size:1.5em">@model.teacher(teachers)</td>
+                    <td>
+                        @model.pp<br />@model.gr1<br />@model.dec1
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="current_week_name">
+        <p>
+            @weekName
+        </p>
+    </div>
+    <div class="current_weather">
+        @weather
+    </div>
+    <div class="current_admin">
+        <p class="currentAdminTextP">
+            Дежурный администратор:
+        </p>
+        <p class="currentAdminSelAdminP">
+            @selectedAdmin
+        </p>
+    </div>
+    <div class="current_para">
+        <p class="current_paraLabelPara">
+            @update.labelPara
+        </p>
+        <p class="current_paraNumberPara">
+            @update.tbNumberPara
+        </p>
+    </div>
+</body>
+
+
+@code {
+    [Parameter]
+    public string floor { get; set; }
+    [Parameter]
+    public string corp { get; set; }
+    private HubConnection? hubConnection;
+    public string date { get; set; }
+    public string month { get; set; }
+    public int count { get; set; }
+    public string weekName { get; set; }
+    public string weather { get; set; }
+    public string selectedAdmin { get; set; }
+    public List<string> teachers { get; set; }
+    RequestForDynamicUpdate update { get; set; } = new RequestForDynamicUpdate();
+    public List<TabloBlazorMain.Shared.LastDanceModels.FloorCabinet> floorCabinets = new List<TabloBlazorMain.Shared.LastDanceModels.FloorCabinet>();
+    public List<TabloBlazorMain.Shared.LastDanceModels.DayWeekClass> DayWeeks = new List<TabloBlazorMain.Shared.LastDanceModels.DayWeekClass>();
+    private static System.Timers.Timer aTimer;
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder().WithUrl(NavigationManager.ToAbsoluteUri("/GoodHubGbl")).WithAutomaticReconnect().Build();
+        hubConnection.On<string>("SendWeather", async (message) =>
+        {
+            weather = message;
+            var response = await Http.GetAsync($"api/LastDance/getteacherslist");
+            response.EnsureSuccessStatusCode();
+            teachers = response.Content.ReadAsAsync<List<string>>().Result;
+            StateHasChanged();
+        });
+        hubConnection.On<string>("SendWeekName", (message) =>
+        {
+            weekName = message;
+            StateHasChanged();
+        });
+        hubConnection.On<string>("SendAdmin", (message) =>
+        {
+            selectedAdmin = message;
+            StateHasChanged();
+        });
+        hubConnection.On<RequestForDynamicUpdate>("SendRequest", (message) =>
+        {
+            try
+            {
+                if (count == 10)
+                {
+                    getParasTableDate();
+                    count = 0;
+                }
+                update = message;
+                date = update.timeNow;
+                count += 1;
+                StateHasChanged();
+            }
+            catch
+            {
+
+            }
+        });
+        month = DateTime.Now.ToString("dd MMMM");
+        await getMainUpdate();
+        await getParasTableDate();
+        getWeather();
+        getWeekName();
+        getAdmins();
+        await hubConnection.StartAsync();
+    }
+
+    string getColor(Para pr)
+    {
+        if (pr.runningNow)
+            return "rgb(167,51,247)";
+        else
+            return "transparent";
+    }
+
+    string getFullHeight(List<Para> paras)
+    {
+        double height = 0;
+        foreach (var lv in paras)
+        {
+            height += 100 / @update.grLineHeight * lv.height * 1.1;
+        }
+        return (height + "%").Replace(',', '.');
+    }
+
+    private async void getWeather()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/weather");
+            response.EnsureSuccessStatusCode();
+            var str = response.Content.ReadAsStringAsync().Result;
+            weather = str.Replace("'", "");
+            var response1 = await Http.GetAsync($"api/LastDance/getteachersList");
+            response1.EnsureSuccessStatusCode();
+            teachers = response1.Content.ReadAsAsync<List<string>>().Result;
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+    private async void getWeekName()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/weekName");
+            response.EnsureSuccessStatusCode();
+            var str = response.Content.ReadAsStringAsync().Result;
+            weekName = str.Replace("'", "");
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+    private async void getAdmins()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/admins");
+            response.EnsureSuccessStatusCode();
+            var str = response.Content.ReadAsStringAsync().Result;
+            selectedAdmin = str.Replace("\n", "<wbr/>");
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+    private async Task getMainUpdate()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/update");
+            response.EnsureSuccessStatusCode();
+            update = response.Content.ReadAsAsync<RequestForDynamicUpdate>().Result;
+            date = update.timeNow;
+
+        }
+        catch { }
+    }
+    private async Task getParasTableDate()
+    {
+        try
+        {
+            var query = new Uri(NavigationManager.Uri).Query;
+            corp = HttpUtility.ParseQueryString(query).Get("corp");
+            floor = HttpUtility.ParseQueryString(query).Get("floor");
+            var response = await Http.PostAsync($"api/LastDance/getFloorShedule", new TabloBlazorMain.Shared.LastDanceModels.PostFloorModel { floor = floor + corp, count = update.lvTime.Count(), paraNow= update.paraNow, CHKR = update.lv}, new JsonMediaTypeFormatter());
+            response.EnsureSuccessStatusCode();
+            DayWeeks = response.Content.ReadAsAsync<List<TabloBlazorMain.Shared.LastDanceModels.DayWeekClass>>().Result;
+            
+        }
+        catch (Exception ex) { }
+    }
+}

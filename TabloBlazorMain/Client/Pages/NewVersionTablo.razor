@@ -1,0 +1,383 @@
+﻿@page "/newversiontablo"
+@inject HttpClient Http
+@using TabloBlazorMain.Shared.Models
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" http-equiv="refresh" content="60*30">
+    <link rel="stylesheet" type="text/css" href="css/newTabloStyles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css">
+    <title>InfoTabMain</title>
+</head>
+
+<body>
+    <video hidden autoplay muted loop>
+        <source src="audio/TishinaAudio.mp3" />
+    </video>
+    <article id="rightArticle">
+        <img id="LeftBackgroundShape" src="images/LeftBackgroundShape.png">
+    </article>
+    <article id="leftArticle">
+        <img id="RightBackgroundShape" src="images/RightBackgroundShape.png">
+    </article>
+    <main>
+        <section id="Greetings">
+            <img src="/images/OKEI 1.png" style="width:15%" />
+            @dayPartHeader
+        </section>
+        <section id="dateToDay" class="fontHeaders">
+            Число:
+            <div class="fontContent">
+                &nbsp;&nbsp;@month&nbsp;&nbsp;
+            </div>
+        </section>
+        <section id="weekName" class="fontHeaders">
+            Неделя:
+            <div class="fontContent">
+                &nbsp;&nbsp;@weekName&nbsp;&nbsp;
+            </div>
+        </section>
+        <article @ref="sl" id="annoncment">
+            @try
+            {
+                    @foreach (var item in Announcements)
+                    {
+                        @if (item != null)
+                        {
+                            <div class="outerDiv" id="firstAn">
+                                <div class="time">
+                                    <h2>@item.dateAdded.Day<br><span>@item.dateAdded.ToString("MMMM")</span></h2>
+                                </div>
+                                <div class="details">
+                                    <h2>@item.Header</h2>
+                                    <p>
+                                        @item.Name
+                                    </p>
+                                </div>
+                            </div>
+
+                    }
+                    CreateAnc();
+                }
+
+            }
+            catch { }
+            finally { }
+        </article>
+        <article id="art">
+            <section id="statusNow" class="fontHeaders">
+                Сейчас идёт:
+                <div class="fontContent">
+                    &nbsp;&nbsp;@update.tbNumberPara&nbsp;&nbsp;
+                </div>
+            </section>
+            <section id="toEndTime" class="fontHeaders">
+                Осталось до конца:
+                <div class="fontContent" id="minuteDiv">
+                    <div id="toEndTimeDiv">
+                        <div id="statusBar" style="width:calc(@update.progressBarPara.ToString().Replace(",",".")*1%)">
+                        </div>
+                    </div>
+                    @update.toEndPara&nbsp
+                </div>
+            </section>
+        </article>
+        <section class="timer">
+            <article>
+                <div>@d1</div>
+                <div>@d2</div>
+                <div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div>@d3</div>
+                <div>@d4</div>
+            </article>
+            <div id="AdminDiv">
+                &nbsp;
+                <img src="images/ri_temp-cold-line.png">
+                @weather&nbsp;&nbsp;
+            </div>
+            <span>Дежурный администратор:</span>
+            <div class="divAdmin">
+                &nbsp;
+                @selectedAdmin
+                &nbsp;&nbsp;
+            </div>
+        </section>
+        <section>
+        </section>
+    </main>
+    <footer>
+        <article>
+            <table>
+                <tr>
+                    @foreach (var item in update.lv)
+                    {
+                        <td style="font-size: @item.fontSize; width:calc(100/ @update.grLineHeight * @item.height *1%)">
+                            @item.outGraphicNewTablo
+                        </td>
+                    }
+                </tr>
+                <tr id="smallTr"></tr>
+                <tr id="polosi">
+                    @foreach (var item in update.lv)
+                    {
+                        <td style="position:relative; border-right: white solid 2px; border-left: white solid 2px">
+                            @if (item.TypeInterval.name == "Перемена")
+                            {
+                                <div id="peremenaPolosa" style="width:1px">
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="position:relative; margin-right:25%; height:25%; margin-left:25%; border-right: white solid 1px; border-left: white solid 1px">
+                                    <div id="peremenaPolosa" style="height:200%; position:absolute; margin-top:-4%">
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                    }
+                </tr>
+                <tr id="smallTr"></tr>
+                <tr id="scale">
+                    <td colspan="20">
+                        <div id="allLine" style="background:#C5C5C5; overflow: hidden;">
+                            <div id="ulLineDivLine" style="width:calc((100 / @update.grLineHeight * @update.colorLineHeight.ToString().Replace(",",".")) * 1.07%)">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="smallTr"></tr>
+                <tr>
+                    @foreach (var item in update.lv)
+                    {
+                        <td style="text-align-last:center; width:calc(100/ @update.grLineHeight * @item.height *1%)">
+                            @if (item.TypeInterval.name == "Перемена")
+                            {
+                                <div style="width:3px; display:flex; justify-content:center; margin-left:50%">
+
+                                    <span>@item.height@min</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    @item.beginEnd
+                                </div>
+                            }
+
+                        </td>
+                    }
+                </tr>
+            </table>
+        </article>
+    </footer>
+</body>
+</html>
+
+
+
+@code {
+    private HubConnection? hubConnection;
+    public string date { get; set; }
+    public ElementReference sl { get; set; }
+    public string d1 { get; set; }
+    public string min { get; set; } = "мин";
+    public string d2 { get; set; }
+    public string d3 { get; set; }
+    public string d4 { get; set; }
+    public string dayPartHeader { get; set; }
+    int counter = 0;
+    int counter1 = 0;
+    int refreshCounter = 0;
+    public string month { get; set; }
+    public string weekName { get; set; }
+    public string weather { get; set; }
+    public string selectedAdmin { get; set; }
+    public List<Announcement> Announcements { get; set; }
+    private IJSObjectReference module;
+    RequestForDynamicUpdate update { get; set; } = new RequestForDynamicUpdate();
+
+    protected override async Task OnAfterRenderAsync(bool b)
+    {
+        await Task.Delay(10000);
+        module = await JSRuntime.InvokeAsync<IJSObjectReference>(
+     "import", "/AnimaAnouncment.js");
+        await module.InvokeVoidAsync("animationAnnouncment");
+        if (refreshCounter == 0)
+        {
+            
+        }
+    }
+
+    public async Task CreateAnc()
+    {
+        if (counter == 0)
+        {
+            await Task.Delay(10000);
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>(
+    "import", "/AnimaAnouncment.js");
+            await module.InvokeVoidAsync("create");
+            counter++;
+        }
+    }
+
+    public async Task ClearAnc()
+    {
+        if (counter1 == 0)
+        {
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>(
+         "import", "/AnimaAnouncment.js");
+            await module.InvokeVoidAsync("vanila");
+            counter = 0;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder().WithUrl(NavigationManager.ToAbsoluteUri("/GoodHubGbl")).WithAutomaticReconnect().Build();
+        hubConnection.On<List<Announcement>>("SendAnn", async (message) =>
+        {
+            Announcements = message;
+            StateHasChanged();
+            await ClearAnc();
+        });
+        hubConnection.On<string>("SendWeather", (message) =>
+        {
+            weather = message;
+            StateHasChanged();
+        });
+
+        hubConnection.On<string>("SendDatPart", (message) =>
+        {
+            dayPartHeader = message;
+            StateHasChanged();
+        });
+
+        hubConnection.On<string>("SendWeekName", (message) =>
+        {
+            weekName = message;
+            StateHasChanged();
+        });
+        hubConnection.On<string>("SendAdmin", (message) =>
+        {
+            selectedAdmin = message;
+            StateHasChanged();
+        });
+        hubConnection.On<RequestForDynamicUpdate>("SendRequest", (message) =>
+        {
+            update = message;
+            date = update.timeNow;
+            d1 = date[0].ToString();
+            d2 = date[1].ToString();
+            d3 = date[3].ToString();
+            d4 = date[4].ToString();
+            StateHasChanged();
+        });
+        month = DateTime.Now.ToString("dd MMMM");
+        getWeather();
+        getDatPartHeader();
+        getWeekName();
+        getAdmins();
+        getAnnouncment();
+        getMainUpdate();
+        await hubConnection.StartAsync();
+    }
+    string getColor(Para pr)
+    {
+        if (pr.runningNow)
+            return "rgb(167,51,247)";
+        else
+            return "transparent";
+    }
+    string getFullHeight(List<Para> paras)
+    {
+        double height = 0;
+        foreach (var lv in paras)
+        {
+            height += 100 / @update.grLineHeight * lv.height * 1.1;
+        }
+        return (height + "%").Replace(',', '.');
+    }
+    private async void getWeather()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/weather");
+            response.EnsureSuccessStatusCode();
+            var str = response.Content.ReadAsStringAsync().Result;
+            weather = str.Replace("'", "");
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+    private async void getWeekName()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/weekName");
+            response.EnsureSuccessStatusCode();
+            var str = response.Content.ReadAsStringAsync().Result;
+            weekName = str.Replace("'", "");
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+
+        private async void getDatPartHeader()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/DayPartHeader");
+            response.EnsureSuccessStatusCode();
+            dayPartHeader = response.Content.ReadAsStringAsync().Result;
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+
+    private async void getAdmins()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/admins");
+            response.EnsureSuccessStatusCode();
+            var str = response.Content.ReadAsStringAsync().Result;
+            selectedAdmin = str.Replace("\n", "<wbr/>");
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+    private async void getAnnouncment()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/announc");
+            response.EnsureSuccessStatusCode();
+            Announcements = response.Content.ReadAsAsync<List<Announcement>>().Result;
+        }
+        catch (Exception ex)
+        { Console.WriteLine(ex.Message); }
+    }
+    private async void getMainUpdate()
+    {
+        try
+        {
+            var response = await Http.GetAsync("TabloApi/update");
+            response.EnsureSuccessStatusCode();
+            update = response.Content.ReadAsAsync<RequestForDynamicUpdate>().Result;
+            date = update.timeNow;
+            d1 = date[0].ToString();
+            d2 = date[1].ToString();
+            d3 = date[3].ToString();
+            d4 = date[4].ToString();
+        }
+        catch { }
+    }
+}

@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspose.Cells" Version="22.11.0" />
+    <PackageReference Include="ClosedXML" Version="0.97.0" />
+    <PackageReference Include="FreeSpire.XLS" Version="12.7.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Client\TabloBlazorMain.Client.csproj" />
+    <ProjectReference Include="..\Shared\TabloBlazorMain.Shared.csproj" />
+  </ItemGroup>
+
+	<!--<Target Name="CustomActionsBeforePublish" BeforeTargets="BeforePublish">
+		<Message Text="Before" Importance="high" />
+		<Exec Command="$(_Cmd) $psCred = Get-StoredCredential -Target '192.168.147.51'; Invoke-Command -ComputerName 192.168.147.51 -Credential $psCred -ScriptBlock {Stop-Website -Name 87port}" />
+	</Target>
+	<Target Name="CustomActionsAfterPublish" AfterTargets="AfterPublish">
+		<Message Text="Inside AfterPublish" Importance="high" />
+		<Exec Command="$(_Cmd) $psCred = Get-StoredCredential -Target '192.168.147.51'; Invoke-Command -ComputerName 192.168.147.51 -Credential $psCred -ScriptBlock {Start-Website -Name 87port}" />
+	</Target>
+	<PropertyGroup>
+		<_Cmd>"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"</_Cmd>
+		
+	</PropertyGroup>
+<Target Name="CopyWebConfig" AfterTargets="Publish">
+  <Copy SourceFiles="web.config" DestinationFolder="$(PublishDir)" />
+</Target>-->
+</Project>

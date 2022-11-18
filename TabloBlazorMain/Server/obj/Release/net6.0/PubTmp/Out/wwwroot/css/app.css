@@ -1,0 +1,8 @@
+﻿.mainBody {
+    position: relative;
+    width: 98%;
+    background-color: transparent;
+    height: 98%;
+    min-width: 1500px;
+    min-height: 800px
+}

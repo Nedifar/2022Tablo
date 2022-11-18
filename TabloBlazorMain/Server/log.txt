@@ -1,0 +1,76 @@
+17.11.2022 11:45:01 ----- WeatherHostedErrorOne or more errors occurred. (Error converting value {null} to type 'System.Single'. Path 'currentConditions.solarenergy', line 1, position 11155.)
+17.11.2022 11:47:54 ----- WeatherHostedErrorOne or more errors occurred. (Error converting value {null} to type 'System.Single'. Path 'currentConditions.solarenergy', line 1, position 11155.)
+17.11.2022 19:56:08 ----- WeatherHostedErrorOne or more errors occurred. (Error converting value {null} to type 'System.Single'. Path 'currentConditions.solarenergy', line 1, position 11155.)
+17.11.2022 19:57:03 ----- g0KEl9WO6g1PsD1Xn_l1Ng
+17.11.2022 19:58:57 ----- Disconnected  g0KEl9WO6g1PsD1Xn_l1Ng
+17.11.2022 19:58:59 ----- w2YhvPXi6s6GtxiCuameqA
+17.11.2022 20:07:55 ----- WeatherHostedErrorOne or more errors occurred. (Error converting value {null} to type 'System.Single'. Path 'currentConditions.solarenergy', line 1, position 11164.)
+17.11.2022 20:08:02 ----- YkwII8lqJjABhGP3x3bxfw
+17.11.2022 20:08:14 ----- Disconnected  YkwII8lqJjABhGP3x3bxfw
+17.11.2022 20:08:17 ----- vr_gZqwem4lgLmLjcK8uJg
+17.11.2022 20:08:45 ----- Disconnected  vr_gZqwem4lgLmLjcK8uJg
+17.11.2022 20:10:13 ----- WeatherHostedErrorOne or more errors occurred. (Error converting value {null} to type 'System.Single'. Path 'currentConditions.solarenergy', line 1, position 11164.)
+17.11.2022 20:10:21 ----- GM0SailiBM2-PWvAklIwjA
+17.11.2022 20:10:34 ----- Disconnected  GM0SailiBM2-PWvAklIwjA
+17.11.2022 20:11:18 ----- WeatherHostedErrorOne or more errors occurred. (Error converting value {null} to type 'System.Single'. Path 'currentConditions.solarenergy', line 1, position 11164.)
+17.11.2022 20:11:25 ----- oue_BOUS7DmbRDRovbk7bg
+17.11.2022 20:11:55 ----- Disconnected  oue_BOUS7DmbRDRovbk7bg
+17.11.2022 20:11:58 ----- fgitxcrmLyVCalIONpJQmw
+17.11.2022 20:13:42 ----- Disconnected  fgitxcrmLyVCalIONpJQmw
+17.11.2022 20:20:56 ----- Il9J0QSVGqdCpu65joj0wg
+17.11.2022 20:21:07 ----- Disconnected  Il9J0QSVGqdCpu65joj0wg
+17.11.2022 20:22:22 ----- K47GXJRsLBmkadrX1rfPOg
+17.11.2022 20:22:27 ----- Disconnected  K47GXJRsLBmkadrX1rfPOg
+17.11.2022 20:22:29 ----- mtQgtPySfaZMO0Vwj6lIQw
+17.11.2022 20:27:49 ----- P9WCel6WUlLGthEm6h553g
+17.11.2022 20:28:05 ----- Disconnected  P9WCel6WUlLGthEm6h553g
+17.11.2022 20:28:08 ----- 928AIWDjGqFAI98a7Nz9JA
+17.11.2022 20:28:50 ----- Disconnected  928AIWDjGqFAI98a7Nz9JA
+17.11.2022 20:29:35 ----- 1ck-aO3YQQy2z9c-Vy_6ng
+17.11.2022 20:29:46 ----- XeoCRYH5NAeHGGU40DGNdQ
+17.11.2022 20:32:36 ----- Disconnected  1ck-aO3YQQy2z9c-Vy_6ng
+17.11.2022 20:33:06 ----- 41twtFGFXnnyRn0OtJnnwg
+17.11.2022 20:33:28 ----- -dXbR9Vhgq_cMNPWJ9K0ew
+17.11.2022 20:34:08 ----- Disconnected  41twtFGFXnnyRn0OtJnnwg
+17.11.2022 20:34:10 ----- 58U110QbMOgrcsa9Ll0GiA
+17.11.2022 20:35:09 ----- PfWUpqRPeeGmmvO-vezQRw
+17.11.2022 20:35:13 ----- Disconnected  PfWUpqRPeeGmmvO-vezQRw
+17.11.2022 20:35:13 ----- yFv6hP14N0Il_E0eIGIl2g
+17.11.2022 20:35:15 ----- EpaxipQ-q6rAudVWT8elpw
+17.11.2022 20:35:37 ----- Disconnected  EpaxipQ-q6rAudVWT8elpw
+17.11.2022 20:36:18 ----- dZi0vdpT7SzFx9zVpOtCVw
+17.11.2022 20:36:20 ----- Disconnected  dZi0vdpT7SzFx9zVpOtCVw
+17.11.2022 20:36:22 ----- 1JR9V0L6HnPB4av9M6GJQA
+17.11.2022 20:36:29 ----- Unm0L3daSRVxdN9oW1rybA
+17.11.2022 20:37:19 ----- Disconnected  1JR9V0L6HnPB4av9M6GJQA
+17.11.2022 20:38:14 ----- urELugOaZdXkJMItHq3SNw
+17.11.2022 20:38:28 ----- d307C9nQwJLRdSlAbHLN8A
+17.11.2022 20:38:36 ----- Disconnected  d307C9nQwJLRdSlAbHLN8A
+17.11.2022 20:38:38 ----- 5sYNx58nEC46O3hxh9psew
+17.11.2022 20:38:42 ----- Disconnected  5sYNx58nEC46O3hxh9psew
+17.11.2022 20:38:53 ----- Disconnected  urELugOaZdXkJMItHq3SNw
+18.11.2022 10:22:12 ----- 5rHWo95im4zcpgF2bJzOAA
+18.11.2022 11:05:26 ----- Disconnected  5rHWo95im4zcpgF2bJzOAA
+18.11.2022 12:06:22 ----- 8YoR0za-vk8L415f9edH_A
+18.11.2022 12:07:29 ----- Disconnected  8YoR0za-vk8L415f9edH_A
+18.11.2022 12:07:34 ----- SHc9z0LhSP5BViUVR7v87A
+18.11.2022 12:15:44 ----- MainSheduleErrorCould not find a part of the path 'C:\Users\SU\Desktop\TabloBlazorMain\TabloBlazorMain\Server\bin\Release\net6.0\Raspisanie\Month.txt'.
+18.11.2022 12:16:08 ----- pgERV9vr0H7x_hEAtkL0lA
+18.11.2022 12:16:19 ----- Disconnected  pgERV9vr0H7x_hEAtkL0lA
+18.11.2022 12:16:40 ----- MainSheduleErrorCould not find a part of the path 'C:\Users\SU\Desktop\TabloBlazorMain\TabloBlazorMain\Server\bin\Release\net6.0\Raspisanie\Month.txt'.
+18.11.2022 12:16:55 ----- YVjWE2KjJ5XaGjMrgkOvAQ
+18.11.2022 12:17:02 ----- Disconnected  YVjWE2KjJ5XaGjMrgkOvAQ
+18.11.2022 12:17:06 ----- jnLtDIX0Sk0LYjHOiYQ8vw
+18.11.2022 12:17:10 ----- Disconnected  jnLtDIX0Sk0LYjHOiYQ8vw
+18.11.2022 12:17:49 ----- _24ypGkx4-sV8zWbyMng4A
+18.11.2022 12:18:58 ----- Disconnected  _24ypGkx4-sV8zWbyMng4A
+18.11.2022 12:19:01 ----- InYfh3hRfXarqniIlcrwqg
+18.11.2022 12:20:59 ----- Disconnected  InYfh3hRfXarqniIlcrwqg
+18.11.2022 12:21:04 ----- T-clZ28UmOZ5AaR8rkUqWQ
+18.11.2022 12:25:41 ----- Vu5Xcw8gwj8LFcWkGVAT8w
+18.11.2022 12:25:51 ----- Disconnected  Vu5Xcw8gwj8LFcWkGVAT8w
+18.11.2022 12:25:54 ----- p708iXFtyJtv8cCBFFOIbA
+18.11.2022 12:28:33 ----- _EwqeZ9R0uXroMc5AsSfJQ
+18.11.2022 12:29:27 ----- Disconnected  _EwqeZ9R0uXroMc5AsSfJQ
+18.11.2022 12:29:30 ----- uOQhyXh9nD_H3rSaWz7AWQ
+18.11.2022 12:38:44 ----- u8ccrHhcZf4AtYR_hJA1rg

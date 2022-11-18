@@ -1,0 +1,101 @@
+﻿
+.mainBody {
+    position: relative;
+    width: 98%;
+    background-color: transparent;
+    height: 98%;
+    min-width: 1500px;
+    min-height: 800px
+}
+
+.current_date_time {
+    width: 100%;
+    align-content: center;
+    position: absolute;
+    top: 10px
+}
+
+    .current_date_time p {
+        text-align: center
+    }
+.monthP {
+    font-size: 2.5em
+}
+.dateP {
+    font-size: 4.5em
+}
+.current_paras_week {
+    position: absolute;
+    align-content: center;
+    height: 30%;
+    width: 98%;
+    left: 1%;
+    top: 23%
+}
+    .current_paras_week table {
+        height: 40%;
+        width: 100%;
+        border: 1px solid White
+    }
+    .current_paras_week tr {
+        border: 1px solid White;
+    }
+    .current_paras_week td {
+        text-align: center;
+        border: 1px solid White;
+    }
+.current_week_name {
+    width: 100%;
+    position: absolute;
+    left: 5px;
+    top: 5px
+}
+    .current_week_name p {
+        text-align: left;
+        font-size: 4em
+    }
+.current_weather {
+    width: 100%;
+    font-size: 5em;
+    position: absolute;
+    left: 5px;
+    bottom: 5px
+}
+.current_admin {
+    width: 100%;
+    position: absolute;
+    bottom: 0px
+}
+    .current_admin p {
+        text-align:center;
+        font-size:2em
+    }
+.currentAdminTextP {
+    text-align: center;
+    font-size: 2em
+}
+.currentAdminSelAdminP {
+    text-align: center;
+    font-size: 2.5em
+}
+.current_para {
+    width: 100%;
+    margin-left: 1%;
+    align-content: center;
+    position: absolute;
+    top: 1%
+}
+.current_paraLabelPara {
+    text-align: right;
+    font-size: 2em
+}
+.current_paraNumberPara {
+    text-align: right;
+    font-style: oblique;
+    font-size: 3em
+}
+
+.StatusParaDiv{
+    position: absolute;
+    top: 60%
+}

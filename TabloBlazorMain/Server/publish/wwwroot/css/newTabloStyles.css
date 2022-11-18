@@ -1,0 +1,426 @@
+﻿@font-face {
+    font-family: FuturaDemiC;
+    src: url(/fonts/Futurademic.otf);
+}
+
+@font-face {
+    font-family: FuturaBookC;
+    src: url(/fonts/Futurabookc.otf);
+}
+
+html {
+    color: #FFFFFF;
+    font-family: 'FuturaDemiC';
+    font-style: normal;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(360deg, #C04848 0%, #480048 100%);
+}
+
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    height: 75%;
+    margin: 0;
+}
+
+#Greetings {
+    float: left;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-size: 4em;
+}
+
+#AdminDiv {
+    white-space: nowrap
+}
+
+#dateToDay {
+    float: left;
+    margin-left: 5%;
+    clear: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#minuteDiv {
+    white-space: nowrap
+}
+
+#dateToDay div {
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    background: rgba(102, 102, 102, 0.4);
+    border: 4px solid rgba(61, 61, 61, 0.4);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    margin-top: 3%;
+}
+
+#weekName {
+    float: left;
+    margin-left: 5%;
+    clear: left;
+}
+
+    #weekName div {
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        background: rgba(102, 102, 102, 0.4);
+        border: 4px solid rgba(61, 61, 61, 0.4);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+        border-radius: 17px;
+        margin-top: 3%;
+    }
+
+#statusNow {
+    float: left;
+    margin-right: 25px;
+}
+
+
+    #statusNow div {
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        background: rgba(102, 102, 102, 0.4);
+        border: 4px solid rgba(61, 61, 61, 0.4);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+        border-radius: 17px;
+        margin-top: 9px;
+    }
+
+#toEndTime {
+}
+
+#art {
+    float: left;
+    margin-left: 5%;
+    clear: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+}
+
+#annoncment {
+    float: left;
+    margin-left: 5%;
+    clear: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 90%;
+}
+
+#toEndTime > div {
+    font-size: 2em;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(102, 102, 102, 0.4);
+    border: 4px solid rgba(61, 61, 61, 0.4);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    margin-top: 9px;
+}
+
+#divAdmin {
+    white-space: nowrap
+}
+
+#toEndTimeDiv {
+    width: 70%;
+    background: #C5C5C5;
+    border: 4px solid #FFFFFF;
+    border-radius: 27px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    overflow: hidden
+}
+
+#statusBar {
+    background: linear-gradient(90deg, #C50460 0.01%, #710084 100%);
+    height: 100%;
+    margin-top: 0;
+    border-radius: 27px;
+}
+
+.fontHeaders {
+    font-size: 1.8em;
+    font-family: "FuturaBookC";
+    font-style: normal;
+}
+
+.fontContent {
+    font-family: 'FuturaDemiC';
+}
+
+#rightArticle {
+    float: right;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+
+#leftArticle {
+    float: left;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+
+#RightBackgroundShape {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+#LeftBackgroundShape {
+    width: 100%;
+    height: 100%;
+    float: right;
+}
+
+.timer {
+    float: right;
+    top: 0;
+    right: 0;
+    margin-top: 2%;
+    margin-right: 5%;
+    position: absolute;
+    width: 30%;
+}
+
+div > img {
+    height: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.timer article:first-of-type {
+    display: inline-flex;
+    float: right;
+    margin-right: 10%;
+}
+
+    .timer article:first-of-type > div:nth-of-type(3) {
+        display: grid;
+        align-content: space-evenly;
+        background: bottom;
+        border: 0px;
+        box-shadow: none;
+    }
+
+    .timer article:first-of-type div:nth-of-type(3) > div {
+        border-radius: 17px;
+        width: 7px;
+        height: 7px;
+    }
+
+.timer div {
+    font-family: "FuturaDemiC";
+    font-size: 6em;
+    display: inline-flex;
+    justify-content: center;
+    background: rgba(102, 102, 102, 0.4);
+    border: 4px solid rgba(61, 61, 61, 0.4);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    margin: 2%;
+    padding-top: 0.1%;
+    white-space: nowrap
+}
+
+.timer > div {
+    font-family: "FuturaBookC";
+    font-size: 3.5em;
+    align-items: center;
+    margin-top: 3%;
+    float: right;
+    margin-right: 1%;
+    clear: both;
+}
+
+.timer > span {
+    font-family: "FuturaBookC";
+    font-size: 1.8em;
+    align-items: center;
+    margin-top: 2%;
+    float: right;
+    margin-right: 1%;
+    clear: both;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 245px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+    footer article {
+        display: flex;
+        justify-content: center;
+        align-content: flex-end;
+        flex-flow: wrap-reverse;
+        background: rgba(102, 102, 102, 0.4);
+        border: 4px solid rgba(61, 61, 61, 0.4);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+        border-radius: 17px;
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 0;
+    }
+
+table {
+    width: 95%;
+    height: 90%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: !important
+}
+
+tr {
+    /*border: white solid 2px;*/
+    height: 25%;
+    box-sizing: border-box;
+}
+
+#smallTr {
+    height: 10%
+}
+
+td {
+    /*border: white solid 2px;*/
+    box-sizing: border-box;
+    text-align-last: center;
+}
+
+#polosi div {
+}
+
+#peremenaPolosa {
+    margin-left: 50%;
+    margin-right: 50%;
+    width: 2px;
+    height: 50%;
+    background-color: white
+}
+
+#annoncment text {
+}
+
+#allLine {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 17px;
+    border: white solid 2px;
+    background: #C5C5C5;
+}
+
+#ulLineDivLine {
+    height: 100%;
+    border-radius: 17px;
+    border: !important;
+    box-sizing: border-box;
+    right: 0;
+    background: linear-gradient(90deg, #C50460 0.01%, #710084 100%);
+}
+
+#annoncment {
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    height: 20%;
+    margin-top: 2.5%;
+    background: rgba(102, 102, 102, 0.4);
+    border: 4px solid rgba(61, 61, 61, 0.4);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+    box-sizing: border-box;
+}
+
+    #annoncment .outerDiv {
+        /*position: absolute;*/
+        /*top: 50%;*/
+        /*transform: translateY(-50%);*/
+        margin: 0;
+        counter-increment: gallery-cell;
+        /*padding: 40px;*/
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%
+    }
+
+    #annoncment ul li {
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    #annoncment .outerDiv .time {
+        position: relative;
+        /*padding: 20px;*/
+        background: linear-gradient(135deg, #C50460 0.01%, #710084 100%);
+        width: 20%;
+        height: 100%;
+        box-sizing: border-box;
+        float: left;
+        text-align: center;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-color: #FFFFFF;
+        border-style: solid
+    }
+
+        #annoncment .outerDiv .time h2 {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            line-height: 30px;
+        }
+
+        #annoncment .outerDiv .time span {
+            font-size: 30px;
+        }
+
+    #annoncment .outerDiv .details {
+        padding: 5px 20px;
+        box-sizing: border-box;
+        width: 75%;
+        height: 100%;
+        float: left;
+    }
+
+        #annoncment .outerDiv .details h2 {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-size: 32px;
+        }
+
+        #annoncment .outerDiv .details p {
+            position: relative;
+            margin: 10px 0 0;
+            padding: 0;
+            font-size: 16px;
+        }
